@@ -3,27 +3,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import { auth } from './Auth/Firebase';
+
 import img from '../Media/drama.png'
 const Home = () => {
-  const [bgImage, setBgImage] = useState('/default-image.jpg'); // Default image
+  const [bgImage, setBgImage] = useState('https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2024/third-party/Untitled4-1726883883.jpg&w=900&height=601'); // Default image
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Fetch the initial background image from the API
-    const fetchBackgroundImage = async () => {
-      try {
-        const response = await axios.get('/api/background-image'); // Adjust the API endpoint
-        setBgImage(response.data.imageUrl); // Assuming the response has an imageUrl property
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching the background image:", error);
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   // Fetch the initial background image from the API
+  //   const fetchBackgroundImage = async () => {
+  //     try {
+  //       const response = await axios.get('/api/background-image'); // Adjust the API endpoint
+  //       setBgImage(response.data.imageUrl); // Assuming the response has an imageUrl property
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching the background image:", error);
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchBackgroundImage();
-  }, []);
+  //   fetchBackgroundImage();
+  // }, []);
 
   const handleChangeBackground = async () => {
     setLoading(true);
@@ -36,7 +36,7 @@ const Home = () => {
       setLoading(false);
     }
   };
-  console.log(auth)
+  
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
@@ -45,18 +45,18 @@ const Home = () => {
         className={`relative flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat ${loading ? 'bg-gray-800' : ''}`}
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60"></div> {/* Dark overlay */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="z-10 text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Welcome to Nepali Grand Theater</h1>
-          <p className="text-xl md:text-2xl mb-8">Experience the magic of cinema and culture under one roof.</p>
-          <button onClick={handleChangeBackground} className="px-8 py-3 bg-red-500 rounded-full text-white font-semibold transition hover:bg-red-600 transform hover:scale-105">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 poppins-regular">Welcome to <span className='text-[#FAAD17]'>Hansadhwani</span>  Theater</h1>
+          <p className="text-xl md:text-2xl mb-8 ">Experience the magic of cinema and culture under one roof.</p>
+          {/* <button onClick={handleChangeBackground} className="px-8 py-3 bg-red-500 rounded-full text-white font-semibold transition hover:bg-red-600 transform hover:scale-105">
             Change Background
-          </button>
+          </button> */}
         </motion.div>
       </section>
 

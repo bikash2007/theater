@@ -4,20 +4,33 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ApiProvider } from './contex/index.jsx';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './componets/Home.jsx';
 import AuthDashboard from './componets/Auth/AuthDashboard.jsx';
 import About from './componets/About.jsx';
-const router = createHashRouter([
+import Ticket from './componets/Ticket.jsx';
+import UserProfile from './componets/profile/UserProfile.jsx';
+import AdminPanel from './componets/AdminDashboard/AdminPanel.jsx';
+import GoogleAuth_redirect from './componets/Auth/GoogleAuth_redirect.jsx';
+import NewUserLogin from './componets/Auth/NewUserLogin.jsx';
+
+
+const router = createBrowserRouter([
+  {element:<NewUserLogin/>, path:'/newuserlogin'},
   {
+    
     element: <App />, path: '/', children: [
       { element: <Home />, path: '/' },
       { element: <AuthDashboard />, path: '/auth' },
-      { element: <About/>, path: '/about' },
-     
+      { element: <About />, path: '/about' },
+      { element: <Ticket />, path: '/tickets' },
+      { element: <UserProfile />, path: '/profile' },
+      
+      { element: <AdminPanel />, path: '/admin-dashboard' },
+      { element: <GoogleAuth_redirect />, path: '/google-auth-redirect' },
     ]
   }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,104 +1,112 @@
-// About.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import bg from '../Media/about.jpg';
-import img from '../Media/theater.jpg'
+import overlay from '../Media/overlay.png';
+
 const About = () => {
+  // Animation Variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1.2 } },
+  };
+
+  const slideUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const slideLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const slideRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } },
+  };
+
+  const zoomIn = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+  };
+
   return (
-    <div className="relative w-full min-h-screen bg-center bg-cover text-white flex items-center justify-center" style={{background:`url(${bg})`}}>
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-60" style={{ backgroundImage: `url(${bg})` }} />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90"></div>
-
-      {/* Content Wrapper */}
-      <div className="relative max-w-5xl mx-auto px-6 py-16 text-center flex flex-col items-center space-y-10">
-        
-        {/* Animated Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold text-red-600 mb-4 mt-14 font-[Playfair Display]"
-        >
-          About Nepali Grand Theater
+    <>
+      {/* About Section */}
+      <motion.div
+        className="w-full flex flex-col min-h-64 mt-12 justify-center gap-4 py-9 items-center text-white bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: `url(${overlay})` }}
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 className="underline titan-one-regular text-4xl font-semibold" variants={slideUp}>
+          About Hansadhwani Theater
         </motion.h2>
-
-        {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed font-[Libre Baskerville]"
+          className="max-w-xl text-neutral-200 poppins-regular text-center"
+          variants={slideUp}
         >
-          The Nepali Grand Theater celebrates the essence of drama and storytelling, blending traditional Nepali culture with modern theatrical elements. From vibrant folk tales to inspiring modern performances, our theater is a place where art and heritage come alive.
+          Hansadhwani Theater is a hub of cultural vibrancy, celebrating art, 
+          music, and theatrical excellence. Established with the vision to 
+          nurture creativity and provide a stage for diverse voices, 
+          Hansadhwani stands as a beacon for artistic expression.
         </motion.p>
+      </motion.div>
 
-        {/* Mission Statement */}
+      {/* Mission Section */}
+      <div className="flex flex-col bg-zinc-900">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center space-y-4"
+          className="w-full flex min-h-64 mt-12 justify-start gap-4 py-9 items-center text-white"
+          variants={slideLeft}
+          initial="hidden"
+          animate="visible"
         >
-          <h3 className="text-3xl font-semibold text-red-600 font-[Playfair Display]">Our Mission</h3>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto font-[Libre Baskerville]">
-            To honor and promote the rich cultural legacy of Nepal by creating immersive and transformative theatrical experiences that inspire, educate, and connect our diverse audiences.
-          </p>
+          <motion.div
+            className="bg-black gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
+            variants={zoomIn}
+          >
+            <h2 className="underline titan-one-regular text-4xl font-semibold">Our Mission</h2>
+            <p className="max-w-4xl text-neutral-200 poppins-regular text-center">
+              To create a dynamic platform that bridges tradition and modernity, 
+              nurturing talent and connecting communities through the performing arts.
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Core Values Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-center space-y-4"
+          className="w-full flex min-h-64 mt-12 justify-end gap-4 py-9 items-center text-white"
+          variants={slideRight}
+          initial="hidden"
+          animate="visible"
         >
-          <h3 className="text-3xl font-semibold text-red-600 font-[Playfair Display]">Our Core Values</h3>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto font-[Libre Baskerville]">
-            Passion, Authenticity, Inclusivity, and Excellence. These values guide every performance and initiative, from script to stage.
-          </p>
+          <motion.div
+            className="bg-black gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
+            variants={zoomIn}
+          >
+            <h2 className="underline titan-one-regular text-4xl font-semibold">Our Core Values</h2>
+            <p className="max-w-4xl text-neutral-200 poppins-regular text-center">
+              We value inclusivity, creativity, and cultural preservation. 
+              Our commitment is to inspire and engage audiences through high-quality performances.
+            </p>
+          </motion.div>
         </motion.div>
 
-        {/* History Section */}
+        {/* Image Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="text-center space-y-4"
-        >
-          <h3 className="text-3xl font-semibold text-red-600 font-[Playfair Display]">Our History</h3>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto font-[Libre Baskerville]">
-            Established in 1985, Nepali Grand Theater has been a cultural landmark, evolving with the times while staying true to its roots. Over the decades, we've hosted performances that blend traditional Nepali folk tales with contemporary storytelling, fostering a creative haven for artists across generations.
-          </p>
-        </motion.div>
-
-        {/* Animated Image Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="w-full md:w-3/4 lg:w-2/3 relative shadow-lg rounded-lg overflow-hidden"
+          className="w-full flex justify-center mt-12"
+          variants={zoomIn}
+          initial="hidden"
+          animate="visible"
         >
           <img
-            src={img}
-            alt="Nepali Theater Scene"
-            className="w-full h-full object-cover"
+            src="http://i.imgur.com/CVRfKqj.jpg"
+            alt="Hansadhwani Theater"
+            className="rounded-lg shadow-lg max-w-4xl"
           />
         </motion.div>
-
-        {/* Overlayed Quote or Tagline */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/60 py-3 px-6 rounded-lg text-center font-[Libre Baskerville]"
-        >
-          <p className="text-red-600 italic font-medium">
-            "Bringing stories from the heart of Nepal to life on stage."
-          </p>
-        </motion.div>
       </div>
-    </div>
+    </>
   );
 };
 
