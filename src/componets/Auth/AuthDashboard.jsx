@@ -22,7 +22,7 @@ const AuthDashboard = () => {
     // Redirect to Google OAuth 2.0 authentication page
    const signInWithGoogle = () => {
     const CLIENT_ID = '947260113188-lo3rlci6orer0t2mj4j5s4l346voe2cf.apps.googleusercontent.com';
-    const REDIRECT_URI = 'http://localhost:3000/google-auth-redirect/';
+    const REDIRECT_URI = `${baseUrl}google-auth-redirect/`;
     const SCOPE = 'openid profile email';
 
     const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +

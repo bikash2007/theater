@@ -11,7 +11,7 @@ const GoogleAuthRedirect = () => {
        
         if (code) {
             
-            axios.post('https://hansadhwani.sanskritigram.org/auth/google/callback/', { code })
+            axios.post('https://hansadhwani.sanskritigram.org/api/auth/google/callback/', { code })
                 .then(response => {
                     const token  = response.data.token;
                     
