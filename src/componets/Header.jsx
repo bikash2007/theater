@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSignOut, faTimes } from '@fortawesome/free-solid-svg-icons';
 import logo from '../Media/whiteLogo.png';
 import axios from 'axios';
 import { ApiContext } from '../contex';
@@ -50,7 +50,6 @@ const Header = () => {
 
     useEffect(() => {
         if (token) {
-            
             fetchMembership();
         }
 
@@ -118,13 +117,13 @@ const Header = () => {
                     {token ? (
                         <div className="hidden md:flex items-center gap-2 relative">
                             <img
-                                src={userData?.photo || 'https://imgs.search.brave.com/1WFIpUNAOtVXo51SuasJnMAgOsPwQQXErqrO6H1Ps1M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzk4LzFk/LzZiLzk4MWQ2YjJl/MGNjYjVlOTY4YTA2/MThjOGQ0NzY3MWRh/LmpwZw'}
+                                src={userData?.photo || 'default-avatar.png'}
                                 alt="User"
                                 className="w-10 h-10 rounded-full cursor-pointer"
                                 onClick={toggleDropdown}
                             />
                             <span className="text-white cursor-pointer" onClick={toggleDropdown}>
-                                {userData?.first_name ||''}
+                                {userData?.first_name || ''}
                             </span>
                             {dropdownOpen && (
                                 <div
@@ -139,16 +138,17 @@ const Header = () => {
                                             Admin Dashboard
                                         </NavLink>
                                     ) : (
-                                        <>
+                                            <>
+                                           
                                             <button
                                                 onClick={() => setMembershipPopupVisible(true)}
-                                                className="text-white hover:border-b-2 border-red-700 w-full justify-center"
+                                                className="text-white hover:border-b-2 border-red-700 flex w-full justify-start"
                                             >
                                                 Membership Card
                                             </button>
                                             <NavLink
                                                 to="/profile"
-                                                className="text-white hover:border-b-2 border-red-700 w-full justify-center"
+                                                className="text-white hover:border-b-2 border-red-700 w-full flex justify-start"
                                             >
                                                 Profile
                                             </NavLink>
@@ -156,9 +156,10 @@ const Header = () => {
                                     )}
                                     <button
                                         onClick={handleSignOut}
-                                        className="w-full text-left px-3 py-2 border-t-2 border-white text-red-500 hover:bg-gray-700 rounded transition"
+                                        className="w-full flex justify-start items-center gap-2 text-left px-3 py-2 border-t-2 border-white text-red-500 hover:bg-gray-700 rounded transition"
                                     >
                                         Sign Out
+                                        <FontAwesomeIcon icon={faSignOut}/>
                                     </button>
                                 </div>
                             )}
@@ -181,6 +182,8 @@ const Header = () => {
                     )}
                 </div>
             </header>
+
+            {/* Membership Card Popup */}
             {isMembershipPopupVisible && userData && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div ref={popupRef} className="bg-white rounded-lg shadow-lg p-6 w-96">
@@ -199,6 +202,115 @@ const Header = () => {
                         >
                             Close
                         </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Mobile Menu */}
+            {mobileMenuOpen && (
+                <div className="fixed inset-0 bg-opacity-70 z-50 flex justify-end">
+                    <div className="w-64 bg-gray-900 h-screen shadow-lg p-6 flex flex-col justify-between space-y-6">
+                        <nav className="flex flex-col space-y-4">
+                        <button
+                            className="self-end text-white"
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            <FontAwesomeIcon icon={faTimes} size="lg" />
+                        </button>
+                            <NavLink
+                                to="/"
+                                className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Home
+                            </NavLink>
+                            <NavLink
+                                to="/about"
+                                className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                About
+                            </NavLink>
+                            <NavLink
+                                to="/tickets"
+                                className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Tickets
+                            </NavLink>
+                        </nav>
+                        
+                        <div className='mt-80'>
+                            {token ? (
+                                
+                                <div className="flex flex-col space-y-4 mt-54">
+                                    <div className='w-full flex justify-center'>
+                                     <img
+                                src={userData?.photo || 'default-avatar.png'}
+                                alt="User"
+                                className="w-10 h-10 rounded-full cursor-pointer"
+                                onClick={toggleDropdown}
+                                />
+                                </div>
+                                {(staff === 'true' || superUser === 'true') ? (
+                                    <NavLink
+                                        to="/admin-dashboard"
+                                        className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        Admin Dashboard
+                                    </NavLink>
+                                ) : (
+                                    <>
+                                        <button
+                                            onClick={() => {
+                                                setMobileMenuOpen(false);
+                                                setMembershipPopupVisible(true);
+                                            }}
+                                            className="text-white text-sm font-medium hover:text-red-500 hover:border-b-2 border-red-700 flex justify-start"
+                                        >
+                                            Membership Card
+                                        </button>
+                                        <NavLink
+                                            to="/profile"
+                                            className="text-white text-sm font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            Profile
+                                        </NavLink>
+                                    </>
+                                )}
+                                <button
+                                    onClick={handleSignOut}
+                                    className="text-red-500 font-medium hover:bg-gray-700 px-3 py-2 rounded transition flex justify-center gap-2 items-center"
+                                >
+                                        Sign Out
+                                        <FontAwesomeIcon icon={faSignOut}/>
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex flex-col space-y-4">
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        navigate('/auth?view=login');
+                                    }}
+                                    className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
+                                >
+                                    Login
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        navigate('/auth?view=signup');
+                                    }}
+                                    className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
+                                >
+                                    Become a Member
+                                </button>
+                            </div>
+                            )}
+                            </div>
                     </div>
                 </div>
             )}
