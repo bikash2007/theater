@@ -13,24 +13,30 @@ import UserProfile from './componets/profile/UserProfile.jsx';
 import AdminPanel from './componets/AdminDashboard/AdminPanel.jsx';
 import GoogleAuth_redirect from './componets/Auth/GoogleAuth_redirect.jsx';
 import NewUserLogin from './componets/Auth/NewUserLogin.jsx';
-
+const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const superUser = localStorage.getItem('superUser');
+    const staff = localStorage.getItem('staff');
 
 const router = createBrowserRouter([
-  {element:<NewUserLogin/>, path:'/newuserlogin'},
+  { element: <NewUserLogin />, path: '/newuserlogin' },
   {
-    
-    element: <App />, path: '/', children: [
+    element: <App />,
+    path: '/',
+    children: [
       { element: <Home />, path: '/' },
       { element: <AuthDashboard />, path: '/auth' },
       { element: <About />, path: '/about' },
       { element: <Ticket />, path: '/tickets' },
       { element: <UserProfile />, path: '/profile' },
-      
-      { element: <AdminPanel />, path: '/admin-dashboard' },
+      // Conditionally render AdminPanel if the user is staff or super user
+      ...(staff === 'true' || superUser === 'true' ? [
+        { element: <AdminPanel />, path: '/admin-dashboard' }
+      ] : []),
       { element: <GoogleAuth_redirect />, path: '/google-auth-redirect' },
-    ]
-  }
-]);
+    ],
+  },
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

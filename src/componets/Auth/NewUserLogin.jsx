@@ -46,6 +46,7 @@ const NewUserLogin = () => {
       
     
     }
+    console.log(userData)
     try {
       const response = await axios.patch(`${baseUrl}api/google-user/${userId}/`, {
         

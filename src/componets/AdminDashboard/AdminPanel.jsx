@@ -3,6 +3,7 @@ import MemberList from './MemberList'
 
 const AdminPanel = () => {
    const [isdisplay,setisDisplay] = useState('memberlist')
+   
   return (
     <div className='flex pt-6'>
       <div className='w-1/6 bg-slate-800 h-screen flex pt-6 flex-col gap-4'>
