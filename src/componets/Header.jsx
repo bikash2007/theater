@@ -49,7 +49,10 @@ const Header = () => {
     };
 
     useEffect(() => {
-        fetchMembership();
+        if (token) {
+            
+            fetchMembership();
+        }
 
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -115,13 +118,13 @@ const Header = () => {
                     {token ? (
                         <div className="hidden md:flex items-center gap-2 relative">
                             <img
-                                src={userData?.photo || 'default-avatar.png'}
+                                src={userData?.photo || 'https://imgs.search.brave.com/1WFIpUNAOtVXo51SuasJnMAgOsPwQQXErqrO6H1Ps1M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzk4LzFk/LzZiLzk4MWQ2YjJl/MGNjYjVlOTY4YTA2/MThjOGQ0NzY3MWRh/LmpwZw'}
                                 alt="User"
                                 className="w-10 h-10 rounded-full cursor-pointer"
                                 onClick={toggleDropdown}
                             />
                             <span className="text-white cursor-pointer" onClick={toggleDropdown}>
-                                {userData?.first_name || 'User'}
+                                {userData?.first_name ||''}
                             </span>
                             {dropdownOpen && (
                                 <div

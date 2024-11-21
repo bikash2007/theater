@@ -36,6 +36,7 @@ const Login = () => {
         localStorage.setItem('superUser', response.data.is_superuser);
         toast.success('Login successful!');
         navigate('/');
+        window.location.reload()
       } else {
         toast.error('Unexpected response from server.');
       }

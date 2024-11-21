@@ -46,6 +46,7 @@ const Signup = ({ setShowLogin }) => {
   formData.append('phone', data.contact);
   formData.append('photo', photo); // Append the photo file
   formData.append('membership_type', selectedMembership); // Updating membership type
+  formData.append('is_active', true); // Updating membership type
   
 
   try {

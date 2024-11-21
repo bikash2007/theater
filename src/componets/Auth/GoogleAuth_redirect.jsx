@@ -25,8 +25,9 @@ const GoogleAuthRedirect = () => {
                         localStorage.setItem('token', token)
                         localStorage.setItem('userId', response.data.user_id)
                        
-                        
-                        navigate('/'); // Redirect to profile or a different page after successful login
+                        navigate('/');
+                        window.location.reload()
+                        // Redirect to profile or a different page after successful login
                     }
                 })
                 .catch(error => console.error('Error during Google auth:', error));
