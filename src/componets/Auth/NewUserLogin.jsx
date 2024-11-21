@@ -51,7 +51,7 @@ const NewUserLogin = () => {
       const response = await axios.patch(`${baseUrl}api/google-user/${userId}/`, {
         
         headers: {
-          Authorization: `token ${token}`,
+          Authorization: `Token ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
