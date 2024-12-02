@@ -38,7 +38,7 @@ const Ticket = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-20 text-center"
+        className="relative z-20 text-center backdrop-blur-md rounded-xl px-4 py-3 "
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}

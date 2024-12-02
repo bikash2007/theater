@@ -52,7 +52,7 @@ const Home = () => {
           transition={{ duration: 0.8 }}
           className="z-10 text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 poppins-regular">Welcome to <span className='text-[#FAAD17]'>Hansadhwani</span>  Theater</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 poppins-regular">Welcome to <span className='text-[#FAAD17]'>Hansadhwani</span>  Theatre</h1>
           <p className="text-xl md:text-2xl mb-8 ">Experience the magic of cinema and culture under one roof.</p>
           {/* <button onClick={handleChangeBackground} className="px-8 py-3 bg-red-500 rounded-full text-white font-semibold transition hover:bg-red-600 transform hover:scale-105">
             Change Background
@@ -82,16 +82,23 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="bg-gray-800 py-20 text-center">
+      <section className="bg-center bg-cover relative py-20 text-center "
+          style={{background:`url(https://img.freepik.com/free-photo/cinema-with-popcorn-box-3d-glasses_23-2148133632.jpg?t=st=1732619136~exp=1732622736~hmac=1d7e75463efb6ea693f373f4e0d8c181e3f9def6c7ffd82ac637f8eb02aad252&w=740)`}}
+      >
+        <div className='absolute top-0 h-full w-screen bg-black/40 '></div>
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto z-10"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold mb-6">About Nepali Grand Theater</h2>
+          <h2 className="text-4xl font-bold mb-6  ">About us</h2>
           <p className="text-lg text-gray-300 mb-6">
-            The Nepali Grand Theater is more than a cinema; it's a celebration of our heritage. From classic Nepali tales to international masterpieces, we bring you stories that touch the heart and soul.
+           The Hansadhwani Theatre Membership Scheme is an invitation to become part
+of an inspiring journey. It aims to create a collaborative and supportive community while offering
+unique opportunities to experience theatre in new and meaningful ways. This initiative embodies
+our belief that theatre is more than just a performance—it is a shared celebration of stories that
+connect us all.
           </p>
           <NavLink to={'/about'} className="px-6 py-3 bg-red-500 rounded-full text-white font-semibold transition hover:bg-red-600 transform hover:scale-105">
             Learn More

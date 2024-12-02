@@ -46,15 +46,20 @@ const NewUserLogin = () => {
       
     
     }
-    console.log(userData)
+    const formData = new FormData
+     formData.append(' first_name',firstName)
+     formData.append(' last_name',lastName)
+     formData.append(' phone',phone)
+     formData.append('membership_type',membership)
+    
     try {
-      const response = await axios.patch(`${baseUrl}api/google-user/${userId}/`, {
+      const response = await axios.patch(`${baseUrl}api/google-user/${userId}/`,formData, {
         
         headers: {
           Authorization: `Token ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userData),
+        
       });
        
       if (response.status == 200) {

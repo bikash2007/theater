@@ -39,22 +39,22 @@ const About = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h2 className="underline titan-one-regular text-4xl font-semibold" variants={slideUp}>
-          About Hansadhwani Theater
+        <motion.h2 className=" titan-one-regular text-4xl font-semibold" variants={slideUp}>
+          Inroduction
         </motion.h2>
         <motion.p
-          className="max-w-xl text-neutral-200 poppins-regular text-center"
+          className="max-w-2xl text-neutral-200  text-center"
           variants={slideUp}
         >
-          Hansadhwani Theater is a hub of cultural vibrancy, celebrating art, 
-          music, and theatrical excellence. Established with the vision to 
-          nurture creativity and provide a stage for diverse voices, 
-          Hansadhwani stands as a beacon for artistic expression.
+          The Hansadhwani Theatre is proud to introduce an exclusive membership
+scheme aimed at fostering a deeper connection between the theatre and its loyal patrons. As
+part of our commitment to enriching the arts and culture scene in Pokhara, this initiative offers
+diverse membership tiers that cater to varying levels of engagement and support.
         </motion.p>
       </motion.div>
 
       {/* Mission Section */}
-      <div className="flex flex-col bg-zinc-900">
+      <div className="flex flex-col bg-center bg-cover" style={{background:`url()`}}>
         <motion.div
           className="w-full flex min-h-64 mt-12 justify-start gap-4 py-9 items-center text-white"
           variants={slideLeft}
@@ -62,13 +62,16 @@ const About = () => {
           animate="visible"
         >
           <motion.div
-            className="bg-black gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
+            className="bg-zinc-900  gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
             variants={zoomIn}
           >
-            <h2 className="underline titan-one-regular text-4xl font-semibold">Our Mission</h2>
-            <p className="max-w-4xl text-neutral-200 poppins-regular text-center">
-              To create a dynamic platform that bridges tradition and modernity, 
-              nurturing talent and connecting communities through the performing arts.
+            <h2 className=" titan-one-regular text-4xl font-semibold">Objective</h2>
+            <p className="max-w-4xl text-neutral-200  text-center">
+              The primary objective of this membership scheme is to cultivate a community of
+theatre enthusiasts who value consistent, quality theatrical productions and wish to actively
+contribute to the sustainability and growth of local performing arts. The scheme will also provide
+members with special privileges that enhance their overall experience at Hansadhwani
+Theatre.
             </p>
           </motion.div>
         </motion.div>
@@ -81,13 +84,16 @@ const About = () => {
           animate="visible"
         >
           <motion.div
-            className="bg-black gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
+            className="bg-zinc-900 gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
             variants={zoomIn}
           >
-            <h2 className="underline titan-one-regular text-4xl font-semibold">Our Core Values</h2>
-            <p className="max-w-4xl text-neutral-200 poppins-regular text-center">
-              We value inclusivity, creativity, and cultural preservation. 
-              Our commitment is to inspire and engage audiences through high-quality performances.
+            <h2 className=" titan-one-regular text-4xl font-semibold">Conclusion:</h2>
+            <p className="max-w-4xl text-neutral-200  text-center">
+              The Hansadhwani Theatre Membership Scheme is an invitation to become part
+of an inspiring journey. It aims to create a collaborative and supportive community while offering
+unique opportunities to experience theatre in new and meaningful ways. This initiative embodies
+our belief that theatre is more than just a performance—it is a shared celebration of stories that
+connect us all.
             </p>
           </motion.div>
         </motion.div>

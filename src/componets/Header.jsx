@@ -113,6 +113,16 @@ const Header = () => {
                         >
                             Tickets
                         </NavLink>
+                        <NavLink
+                            to="/membership"
+                            className={({ isActive }) =>
+                                `text-white text-lg hover:text-[#363873] ${
+                                    isActive ? 'border-b-2 border-[#FAAD17] text-[#363873]' : ''
+                                } focus:border-b-2`
+                            }
+                        >
+                            Membership
+                        </NavLink>
                     </nav>
                     {token ? (
                         <div className="hidden md:flex items-center gap-2 relative">
@@ -237,6 +247,13 @@ const Header = () => {
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 Tickets
+                            </NavLink>
+                            <NavLink
+                                to="/membership"
+                                className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Membership
                             </NavLink>
                         </nav>
                         

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ApiContext } from '../../contex';
 
 const GoogleAuthRedirect = () => {
     const navigate = useNavigate();
@@ -8,10 +9,10 @@ const GoogleAuthRedirect = () => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code'); // Retrieves the 'code' parameter
-       
+        const baseUrl = useContext(ApiContext)
         if (code) {
             
-            axios.post('https://hansadhwani.sanskritigram.org/api/auth/google/callback/', { code })
+            axios.post(`${baseUrl}api/auth/google/callback/`, { code })
                 .then(response => {
                     const token  = response.data.token;
                     
