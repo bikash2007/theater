@@ -14,7 +14,7 @@ const Membership = () => {
         "Invitations to members-only events",
         "Pre-show meet-and-greet opportunities",
       ],
-      price: "Rs 5,000/year",
+      price: "comming soon ...",
       icon: <FontAwesomeIcon icon={faTicketAlt} size="2x" className="text-blue-500" />,
     },
     {
@@ -27,7 +27,7 @@ const Membership = () => {
         "Complimentary show tickets",
         "Access to special promotions and merchandise",
       ],
-      price: "Rs 10,000/year",
+      price: "comming soon ...",
       icon: <FontAwesomeIcon icon={faCrown} size="2x" className="text-yellow-500" />,
     },
     {
@@ -40,7 +40,7 @@ const Membership = () => {
         "Recognition on the donor wall",
         "Exclusive behind-the-scenes experiences",
       ],
-      price: "Rs 50,000 (one-time)",
+      price: "comming soon ...",
       icon: <FontAwesomeIcon icon={faStar} size="2x" className="text-purple-500" />,
     },
   ];
