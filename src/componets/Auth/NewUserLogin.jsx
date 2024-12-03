@@ -9,7 +9,7 @@ const NewUserLogin = () => {
   const [phone, setPhone] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [membership, setMembership] = useState('');
+  
   const [showForm, setShowForm] = useState(false);
   const [message, setMessage] = useState(''); // Success/Error message
   const [error, setError] = useState(''); // Validation error message
@@ -33,8 +33,8 @@ const NewUserLogin = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (!phone || !membership) {
-      setError("Please enter your phone number and select a membership type.");
+    if (!phone ) {
+      setError("Please enter your phone number ");
       return;
     }
 
@@ -42,7 +42,6 @@ const NewUserLogin = () => {
       first_name: firstName,
       last_name: lastName,
       phone: phone,
-      membership_type: membership,
       
     
     }
@@ -50,7 +49,7 @@ const NewUserLogin = () => {
      formData.append(' first_name',firstName)
      formData.append(' last_name',lastName)
      formData.append(' phone',phone)
-     formData.append('membership_type',membership)
+    
     
     try {
       const response = await axios.patch(`${baseUrl}api/google-user/${userId}/`,formData, {
@@ -133,19 +132,7 @@ const NewUserLogin = () => {
                 />
               </div>
 
-              <div className="text-left">
-                <label className="block text-teal-300 font-semibold mb-2">Membership Type:</label>
-                <select
-                  value={membership}
-                  onChange={(e) => setMembership(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
-                >
-                  <option value="">Select Membership</option>
-                  <option value="general">General</option>
-                  <option value="premium">Premium</option>
-                </select>
-              </div>
+             
 
               <button
                 type="submit"

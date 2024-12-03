@@ -150,12 +150,12 @@ const Header = () => {
                                     ) : (
                                             <>
                                            
-                                            <button
+                                            {/* <button
                                                 onClick={() => setMembershipPopupVisible(true)}
                                                 className="text-white hover:border-b-2 border-red-700 flex w-full justify-start"
                                             >
                                                 Membership Card
-                                            </button>
+                                            </button> */}
                                             <NavLink
                                                 to="/profile"
                                                 className="text-white hover:border-b-2 border-red-700 w-full flex justify-start"
@@ -279,7 +279,7 @@ const Header = () => {
                                     </NavLink>
                                 ) : (
                                     <>
-                                        <button
+                                        {/* <button
                                             onClick={() => {
                                                 setMobileMenuOpen(false);
                                                 setMembershipPopupVisible(true);
@@ -287,7 +287,7 @@ const Header = () => {
                                             className="text-white text-sm font-medium hover:text-red-500 hover:border-b-2 border-red-700 flex justify-start"
                                         >
                                             Membership Card
-                                        </button>
+                                        </button> */}
                                         <NavLink
                                             to="/profile"
                                             className="text-white text-sm font-medium hover:text-red-500 hover:border-b-2 border-red-700"

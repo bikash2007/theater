@@ -12,12 +12,12 @@ const About = () => {
   useGSAP(() => {
     gsap.from(leftRef.current, {
       x: -400,
-      duration:3
+      duration:2
       
     })
     gsap.from(rightRef.current, {
       x: 400,
-      duration:4
+      duration:3
       
     })
    

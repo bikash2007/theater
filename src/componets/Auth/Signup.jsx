@@ -7,7 +7,6 @@ import { ApiContext } from '../../contex';
 
 const Signup = ({ setShowLogin }) => {
   const baseUrl = useContext(ApiContext); // Get the base URL from context
-  const [selectedMembership, setSelectedMembership] = useState('general');
   const [photo, setPhoto] = useState(null);
 
   // Destructure form methods from react-hook-form
@@ -30,11 +29,7 @@ const Signup = ({ setShowLogin }) => {
   const onSubmit = async (data) => {
   console.log('Form Submitted:', data);
 
-  // Validate photo upload
-  if (!photo) {
-    toast.error('Please upload a photo.');
-    return;
-  }
+ 
 
   // Create a FormData object to send with the PATCH request
   const formData = new FormData();
@@ -44,8 +39,8 @@ const Signup = ({ setShowLogin }) => {
   formData.append('first_name', data.firstName);
   formData.append('last_name', data.lastName);
   formData.append('phone', data.contact);
-  formData.append('photo', photo); // Append the photo file
-  formData.append('membership_type', selectedMembership); // Updating membership type
+    if (photo) { formData.append('photo', photo); } // Append the photo file
+  
   formData.append('is_active', true); // Updating membership type
   
 
@@ -153,17 +148,7 @@ const Signup = ({ setShowLogin }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.05 }}
         />
-        <motion.select
-          value={selectedMembership}
-          onChange={(e) => setSelectedMembership(e.target.value)}
-          className="p-3 rounded bg-gray-800 text-white w-full border border-gray-600"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-        >
-          <option value="general">General</option>
-          <option value="premium">Premium</option>
-        </motion.select>
+        
       </div>
 
       {/* Form Inputs for Password and Confirm Password */}
