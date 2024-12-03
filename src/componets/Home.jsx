@@ -82,10 +82,10 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="bg-center bg-cover relative py-20 text-center "
+      <section className="bg-center bg-cover relative w-full py-20 text-center "
           style={{background:`url(https://img.freepik.com/free-photo/cinema-with-popcorn-box-3d-glasses_23-2148133632.jpg?t=st=1732619136~exp=1732622736~hmac=1d7e75463efb6ea693f373f4e0d8c181e3f9def6c7ffd82ac637f8eb02aad252&w=740)`}}
       >
-        <div className='absolute top-0 h-full w-screen bg-black/40 '></div>
+        <div className='absolute top-0 h-full w-full -z-10 bg-black/40 '></div>
         <motion.div
           className="max-w-3xl mx-auto z-10"
           initial={{ opacity: 0, scale: 0.8 }}
