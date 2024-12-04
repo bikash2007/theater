@@ -186,7 +186,7 @@ const Header = () => {
                                 onClick={() => navigate('/auth?view=signup')}
                                 className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
                             >
-                                Become a Member
+                                Sign up
                             </button>
                         </div>
                     )}
@@ -323,7 +323,7 @@ const Header = () => {
                                     }}
                                     className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
                                 >
-                                    Become a Member
+                                    Sign up
                                 </button>
                             </div>
                             )}
