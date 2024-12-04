@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { ApiContext } from '../../contex';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ({ setShowLogin }) => {
   const baseUrl = useContext(ApiContext); // Get the base URL from context
   const [photo, setPhoto] = useState(null);
-
+  const navigate = useNavigate()
   // Destructure form methods from react-hook-form
   const {
     register,
@@ -51,7 +52,8 @@ const Signup = ({ setShowLogin }) => {
     });
 
     console.log('Response from API:', response.data);
-    toast.success('Profile updated successfully!');
+    toast.success('user register successfully!');
+     navigate('/auth?view=login');
   } catch (error) {
     console.error('Update error:', error);
     toast.error(`Error updating profile: ${error.response?.data?.message || error.message}`);

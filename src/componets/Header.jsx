@@ -82,7 +82,7 @@ const Header = () => {
                     >
                         <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} size="lg" />
                     </button>
-                    <nav className="hidden md:flex space-x-6 items-center lilita-one-regular">
+                    <nav className="hidden md:flex space-x-6 items-center barlow-regular font-bold">
                         <NavLink
                             to="/"
                             className={({ isActive }) =>
