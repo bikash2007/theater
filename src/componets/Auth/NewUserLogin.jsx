@@ -13,7 +13,7 @@ const NewUserLogin = () => {
   const [showForm, setShowForm] = useState(false);
   const [message, setMessage] = useState(''); // Success/Error message
   const [error, setError] = useState(''); // Validation error message
-  const baseUrl = useContext(ApiContext)
+  const { baseUrl } = useContext(ApiContext)
   const userId = localStorage.getItem('googleId')  
   const token = localStorage.getItem('authToken')
   const navigate = useNavigate()

@@ -12,7 +12,8 @@ const UserProfile = () => {
   const [previewPhoto, setPreviewPhoto] = useState(null);
 
   const userId = localStorage.getItem('userId');
-  const baseUrl = useContext(ApiContext);
+  const {baseUrl
+} = useContext(ApiContext);
 
   useEffect(() => {
     const fetchUserData = async () => {

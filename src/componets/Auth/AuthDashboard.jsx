@@ -13,7 +13,8 @@ const AuthDashboard = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(true);
-    const baseUrl = useContext(ApiContext)
+    const {baseUrl
+} = useContext(ApiContext)
     useEffect(() => {
         const view = new URLSearchParams(location.search).get('view');
         setShowLogin(view === 'login');

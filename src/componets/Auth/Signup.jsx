@@ -7,7 +7,7 @@ import { ApiContext } from '../../contex';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = ({ setShowLogin }) => {
-  const baseUrl = useContext(ApiContext); // Get the base URL from context
+  const { baseUrl } = useContext(ApiContext); // Get the base URL from context
   const [photo, setPhoto] = useState(null);
   const navigate = useNavigate()
   // Destructure form methods from react-hook-form

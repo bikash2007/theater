@@ -5,7 +5,7 @@ import { ApiContext } from '../../contex';
 
 const GoogleAuthRedirect = () => {
     const navigate = useNavigate();
-    const baseUrl = useContext(ApiContext); // Use `useContext` at the top level
+    const { baseUrl } = useContext(ApiContext); // Use `useContext` at the top level
     const [loading, setLoading] = useState(true); // Loading state
 
     useEffect(() => {

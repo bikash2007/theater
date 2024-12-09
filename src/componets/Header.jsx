@@ -16,7 +16,7 @@ const Header = () => {
     const userId = localStorage.getItem('userId');
     const superUser = localStorage.getItem('superUser');
     const staff = localStorage.getItem('staff');
-    const baseUrl = useContext(ApiContext);
+    const { baseUrl , selectedLanguage, setSelectedLanguage ,translations } = useContext(ApiContext);
     const navigate = useNavigate();
 
     const dropdownRef = useRef(null);
@@ -67,6 +67,10 @@ const Header = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+    const UpdateLanguage = (e) => {
+        setSelectedLanguage(e.target.value)
+    }
+    
 
     return (
         <>
@@ -75,13 +79,7 @@ const Header = () => {
                     <NavLink to="/">
                         <img src={logo} className="h-7 md:h-12" alt="Logo" />
                     </NavLink>
-                    <button
-                        className="text-white md:hidden"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} size="lg" />
-                    </button>
+                  
                     <nav className="hidden md:flex space-x-6 items-center barlow-regular font-bold">
                         <NavLink
                             to="/"
@@ -91,7 +89,7 @@ const Header = () => {
                                 } focus:border-b-2`
                             }
                         >
-                            Home
+                            {translations.home}
                         </NavLink>
                         <NavLink
                             to="/about"
@@ -101,7 +99,7 @@ const Header = () => {
                                 } focus:border-b-2`
                             }
                         >
-                            About
+                            {translations.about}
                         </NavLink>
                         <NavLink
                             to="/tickets"
@@ -111,7 +109,7 @@ const Header = () => {
                                 } focus:border-b-2`
                             }
                         >
-                            Tickets
+                            {translations.ticket}
                         </NavLink>
                         <NavLink
                             to="/membership"
@@ -121,9 +119,43 @@ const Header = () => {
                                 } focus:border-b-2`
                             }
                         >
-                            Membership
+                            {translations.membership}
                         </NavLink>
                     </nav>
+                   <div className="relative">
+  <select
+    name="language"
+    onChange={(e) => UpdateLanguage(e)}
+    className="appearance-none w-28 px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-white/30 text-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
+  >
+    <option value="english" className='text-blue-600 font-semibold'>English</option>
+    <option value="nepali" className='text-blue-600 font-semibold'>Nepali</option>
+  </select>
+  <div className="absolute top-1/2 right-4 transform -translate-y-1/2 pointer-events-none">
+    <svg
+      className="w-4 h-4 text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </div>
+                    </div>
+                      <button
+                        className="text-white md:hidden"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} size="lg" />
+                    </button>
+
                     {token ? (
                         <div className="hidden md:flex items-center gap-2 relative">
                             <img
@@ -180,13 +212,13 @@ const Header = () => {
                                 onClick={() => navigate('/auth?view=login')}
                                 className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
                             >
-                                Login
+                                {translations.login}
                             </button>
                             <button
                                 onClick={() => navigate('/auth?view=signup')}
                                 className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
                             >
-                                Sign up
+                                {translations.signup}
                             </button>
                         </div>
                     )}
@@ -232,28 +264,28 @@ const Header = () => {
                                 className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Home
+                                {translations.home}
                             </NavLink>
                             <NavLink
                                 to="/about"
                                 className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                About
+                                {translations.about}
                             </NavLink>
                             <NavLink
                                 to="/tickets"
                                 className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Tickets
+                                {translations.ticket}
                             </NavLink>
                             <NavLink
                                 to="/membership"
                                 className="text-white text-lg font-medium hover:text-red-500 hover:border-b-2 border-red-700"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Membership
+                                {translations.membership}
                             </NavLink>
                         </nav>
                         
@@ -314,7 +346,7 @@ const Header = () => {
                                     }}
                                     className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
                                 >
-                                    Login
+                                    {translations.login}
                                 </button>
                                 <button
                                     onClick={() => {
@@ -323,7 +355,7 @@ const Header = () => {
                                     }}
                                     className="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
                                 >
-                                    Sign up
+                                    {translations.signup}
                                 </button>
                             </div>
                             )}

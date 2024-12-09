@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const baseUrl = useContext(ApiContext);
+  const { baseUrl } = useContext(ApiContext);
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState('');
   const [userPass, setUserPass] = useState('');

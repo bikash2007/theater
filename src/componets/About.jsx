@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { motion } from 'framer-motion';
 import overlay from '../Media/overlay.png';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ApiContext } from '../contex';
 
 const About = () => {
+  const{translations}=useContext(ApiContext)
   
   const leftRef = useRef()
   const rightRef = useRef()
@@ -38,15 +40,12 @@ const About = () => {
       
       >
         <h2  className=" barlow-regular text-4xl font-semibold" >
-          Inroduction
+          {translations.introduction}
         </h2>
         <p 
           className="max-w-2xl text-neutral-200 poppins-regular text-center"
         >
-          The Hansadhwani Theatre is proud to introduce an exclusive membership
-scheme aimed at fostering a deeper connection between the theatre and its loyal patrons. As
-part of our commitment to enriching the arts and culture scene in Pokhara, this initiative offers
-diverse membership tiers that cater to varying levels of engagement and support.
+         {translations.introText}
         </p>
       </div>
     
@@ -59,12 +58,9 @@ diverse membership tiers that cater to varying levels of engagement and support.
             ref={leftRef}
             className="bg-zinc-900 border-b-2 hover:border-cyan-400 transition-all ease-in-out duration-200 gap-5 px-11 py-6 flex flex-col items-center rounded-lg shadow-lg"
           >
-            <h2 className=" barlow-regular text-4xl font-semibold">Objective</h2>
+            <h2 className=" barlow-regular text-4xl font-semibold">{translations.objective}</h2>
             <p className="max-w-4xl text-neutral-200 poppins-regular text-center">
-              The primary objective of this membership scheme is to cultivate a community of
-theatre enthusiasts who value consistent, quality theatrical productions and wish to actively
-contribute to the sustainability and growth of local performing arts. The scheme will also provide
-members with special privileges that enhance their overall experience at Hansadhwani
+             {translations.objectiveText}
 Theatre.
             </p>
           </div>
@@ -79,7 +75,7 @@ Theatre.
             ref={rightRef}
             className="bg-zinc-900 gap-5 px-11 py-6 border-b-2 hover:border-cyan-400 transition-all ease-in-out duration-200 flex flex-col items-center rounded-lg shadow-lg"
           >
-            <h2 className=" barlow-regular text-4xl font-semibold">Conclusion:</h2>
+            <h2 className=" barlow-regular text-4xl font-semibold">{translations.conclusion}</h2>
             <p className="max-w-4xl text-neutral-200 poppins-regular  text-center">
               The Hansadhwani Theatre Membership Scheme is an invitation to become part
 of an inspiring journey. It aims to create a collaborative and supportive community while offering
